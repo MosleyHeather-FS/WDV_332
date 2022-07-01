@@ -4,17 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "start": "nodemon server"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MosleyHeather-FS/WDV_332.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "NodeJS", 
+    "Restful", 
+    "API"
+  ],
+  "author": "Heather Mosley",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MosleyHeather-FS/WDV_332/issues"
   },
-  "homepage": "https://github.com/MosleyHeather-FS/WDV_332#readme"
+  "homepage": "https://github.com/MosleyHeather-FS/WDV_332#readme",
+  "devDependencies": {
+    "jest": "^28.1.2",
+    "nodemon": "^2.0.18",
+    "supertest": "^6.2.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
 }
