@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema({
         type: String,
     },
     zip: {
-        type: String,
+        type: Integer,
     }
 })
 
