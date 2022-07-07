@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const router = require('../api/routes/router');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 //middleware
 app.use(cors());
@@ -39,5 +41,4 @@ app.use((error, req, res, next) => {
 });
 
 //Mongoose connection to mongodb
-
 module.exports = app;

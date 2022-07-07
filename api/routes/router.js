@@ -1,6 +1,8 @@
 const express = require("express");
 const { findUser } = require("../../db/db");
 const router = express.Router();
+const mongoose = require('mongoose')
+const User = require('../models/user')
 const bcrypt = require("bcrypt");
 
 router.get("/profile", (req, res) => {
@@ -27,7 +29,11 @@ router.get("/profile", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  bcrypt.hash(req.body.password, 10, (err, hash) => {
+  
+  const email = req.body.email;
+  const password = req.body.password;
+  
+  bcrypt.hash(password, 10, (err, hash) => {
     if (err) {
       res.status(500).json({ message: err.message });
     } else {
@@ -35,8 +41,6 @@ router.post("/signup", (req, res) => {
       res.status(200).json({ password: hash });
     }
   });
-  const email = req.body.email;
-  const password = req.body.password;
 
   //findUser({email: req.body.email})
 
@@ -52,7 +56,7 @@ router.post("/signup", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  bcrypt.compare(req.body.password, user.password, (err, result) => {
+  bcrypt.compare(req.body.password, req.body.hash, (err, result) => {
     if (err) return res.status(501).json({ message: err.message });
     if (result) {
       res.status(200).json({

@@ -2,10 +2,11 @@
 
 const findUser = async(obj) => {
     return await user.Info.find(obj)
+
 }
 
-const saveUser = async(newUser) => {
-    return newUser.save()
+const saveUser = async(user) => {
+    return await user.save()
 }
 
 module.exports = {saveUser, findUser}
