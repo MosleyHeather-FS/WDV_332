@@ -6,25 +6,8 @@ const User = require('../models/user')
 const bcrypt = require("bcrypt");
 
 router.get("/profile", (req, res) => {
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-  const address = req.body.address;
-  const city = req.body.city;
-  const state = req.body.state;
-  const zip = req.body.zip;
-
   res.status(200).json({
     message: "Profile - GET",
-    metadata: {
-      hostname: req.hostname,
-      method: req.method,
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      city: city,
-      state: state,
-      zip: zip,
-    },
   });
 });
 

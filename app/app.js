@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const router = require('../api/routes/router');
+const userRouter = require('../api/routes/userRouter');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/users", router);
+app.use("/users", userRouter);
 
 //middleware for bad url and errors
 app.use((req, res, next) => {
