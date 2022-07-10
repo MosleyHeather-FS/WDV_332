@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const User = require('../api/models/user')
 const { connect, saveUser, findUser, disconnect } = require('./db')
 
-jest.mock('./db.js')
+//jest.mock('./db.js')
 
 beforeEach( async () => {
   await connect();
@@ -42,7 +42,7 @@ describe('', () => {
       // expect user lastName
       expect(user.firstName).toEqual('Heather')
       expect(user.lastName).toEqual('Mosley')
-      expect(user).toHaveProperty('zip', '71269');
+      expect(user).toHaveProperty('zip', 71269);
     })
 })
 
