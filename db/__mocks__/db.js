@@ -11,7 +11,7 @@ const saveUser = () => {
     address: 'P.O. Box 2490',
     city: 'Rayville',
     state: 'Louisiana',
-    zip: '71269',
+    zip: 71269,
   })
 }
 
@@ -24,7 +24,7 @@ const findUser = () => {
     address: 'P.O. Box 2490',
     city: 'Rayville',
     state: 'Louisiana',
-    zip: '71269',
+    zip: 71269,
   })
 }
 

@@ -21,7 +21,7 @@ describe('', () => {
       address: 'P.O. Box 2490',
       city: 'Rayville',
       state: 'Louisiana',
-      zip: '71269',
+      zip: 71269,
     })
 
     // saveUser pass the user
