@@ -5,16 +5,16 @@ const connect = async () => {
     await mongoose.connect()
 }
 
-const findUser = async(email) => {
+const findUser = async (email) => {
     return await User.findOne({email: email}).exec()
 }
 
-const saveUser = async(user) => {
+const saveUser = async (user) => {
     return await user.save()
 }
 
-const disconnect = async() => {
+const disconnect = async () => {
     await mongoose.connection.close()
 }
 
-module.exports = {saveUser, findUser, disconnect, connect}
+module.exports = { connect, findUser, saveUser, disconnect }

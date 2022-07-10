@@ -26,7 +26,7 @@ app.use("/users", userRouter);
 
 //middleware for bad url and errors
 app.use((req, res, next) => {
-  const error = new Error("Not Found");
+  const error = new Error(`Not Found`);
   error.status = 404;
   next(error);
 });
@@ -41,4 +41,11 @@ app.use((error, req, res, next) => {
 });
 
 //Mongoose connection to mongodb
+mongoose.connect(process.env.MONGODBURL, (err)=> {
+  if(err) {
+    console.error("Error: ", err.message)
+  } else {
+    console.log("MongoDB Successful")
+  }
+})
 module.exports = app;
