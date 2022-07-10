@@ -29,24 +29,21 @@ describe('', () => {
 
     // expect test run data
     expect(user.firstName).toEqual('Heather')
-    expect(user.lastName).toEqual('Mosley')
-    expect(user.email).toEqual('hmosley@student.fullsail.edu')
-    expect(user.password).toEqual('password')
-    expect(user.address).toEqual('P.O. Box 2490')
     expect(user.city).toEqual('Rayville')
-    expect(user.state).toEqual('Louisiana')
-    expect(user.zip).toEqual('71269')
+    expect(user.password).toBeDefined()
+})
 
     test('Find user from MongoDB', async () => {
       // get user from findUser({})
-      await findUser(email)
+      const newUser = 'hmosley@student.fullsail.edu'
+      const user = await findUser(newUser.email)
 
       // expect user firstName
       // expect user lastName
       expect(user.firstName).toEqual('Heather')
       expect(user.lastName).toEqual('Mosley')
+      expect(user).toHaveProperty('zip', '71269');
     })
-  })
 })
 
 afterEach( async () => {
