@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const User = require('../api/models/user')
 const { connect, saveUser, findUser, disconnect } = require('./db')
 
-//jest.mock('./db.js')
+jest.mock('./db.js')
 
 beforeEach( async () => {
   await connect();
