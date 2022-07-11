@@ -1,8 +1,9 @@
+const { request } = require('express')
 const mongoose = require('mongoose')
 const User = require('../api/models/user')
 const { connect, saveUser, findUser, disconnect } = require('./db')
 
-//jest.mock('./db.js')
+jest.mock('./db.js')
 
 beforeEach( async () => {
   await connect();
@@ -11,6 +12,7 @@ beforeEach( async () => {
 
 describe('', () => {
   test('Save a user to MongoDB', async () => {
+   
     //create user
     const newUser = new User({
       _id: mongoose.Types.ObjectId(),
@@ -24,10 +26,10 @@ describe('', () => {
       zip: 71269,
     })
 
-    // saveUser pass the user
+     // saveUser pass the user
     const user = await saveUser(newUser)
-
-    // expect test run data
+    
+     // expect test run data
     expect(user.firstName).toEqual('Heather')
     expect(user.city).toEqual('Rayville')
     expect(user.password).toBeDefined()
@@ -36,10 +38,11 @@ describe('', () => {
     test('Find user from MongoDB', async () => {
       // get user from findUser({})
       const newUser = 'hmosley@student.fullsail.edu'
-      const user = await findUser(newUser.email)
+      const user = await findUser(newUser)
 
       // expect user firstName
       // expect user lastName
+      
       expect(user.firstName).toEqual('Heather')
       expect(user.lastName).toEqual('Mosley')
       expect(user).toHaveProperty('zip', 71269);
