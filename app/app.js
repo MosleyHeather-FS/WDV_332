@@ -3,16 +3,20 @@ const app = express();
 const cors = require("cors");
 const userRouter = require('../api/routes/userRouter');
 const mongoose = require('mongoose');
+const jwtRouter = require('../api/routes/jwtRouter')
 require('dotenv').config();
 
 //middleware
 app.use(cors());
 
+//jwt
+app.use('/jwt', jwtRouter);
+
 //middleware for JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
   res.status(200).json({
     message: "Server is up!",
     metadata: {
