@@ -7,8 +7,7 @@ module.exports = (req, res, next) => {
         // Placed in a try to catch errors, can be placed by itself without the error, but always best to do error catches where possible
         const token = req.headers.authorization.split(' ')[1];
         const decoded = jwt.verify(token, process.env.JWTKEY);
-    
-        decoded: decoded
+        req.userData = decoded
         // middleware
         next();
        }

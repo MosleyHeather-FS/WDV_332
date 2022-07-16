@@ -65,16 +65,12 @@ router.post("/login", (req, res, next) => {
         bcrypt.compare(req.body.password, user.password, (err, result) => {
           if (err) return res.status(501).json({ message: err.message });
           if (result) {
-            const firstName = user.firstName;
-            const lastName = user.lastName;
             const email = req.body.email;
-            const password = result.password;
+            const password = user.password;
 
             // JWT Token
             const token = jwt.sign(
               {
-                firstName: firstName,
-                lastName: lastName,
                 email: email,
                 password: password,
               },
@@ -82,7 +78,11 @@ router.post("/login", (req, res, next) => {
               { expiresIn: "30m" }
             );
             // JWT Response with Welcome Page that says firstName and sends back - (name: user.firstName)
-            res.status(200).json({ message: "Secure", token: token, name: user.firstName });
+            res.status(200).json({ 
+              message: "Secure", 
+              token: token, 
+              name: user.firstName
+            });
             
           } else {
             res.status(401).json({
