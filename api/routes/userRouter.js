@@ -67,12 +67,14 @@ router.post("/login", (req, res, next) => {
           if (result) {
             const email = req.body.email;
             const password = user.password;
+            const name = user.firstName;
 
             // JWT Token
             const token = jwt.sign(
               {
                 email: email,
                 password: password,
+                name: name
               },
               process.env.JWTKEY,
               { expiresIn: "30m" }
@@ -81,7 +83,7 @@ router.post("/login", (req, res, next) => {
             res.status(200).json({ 
               message: "Secure", 
               token: token, 
-              name: user.firstName
+              name: name
             });
             
           } else {
@@ -99,7 +101,7 @@ router.post("/login", (req, res, next) => {
 });
 
 router.get("/profile", checkAuth, (req, res, next) => {
-  res.status(200).json({ message: req.userData });
+  res.status(200).json({ message: "Welcome User", result: req.userData });
 });
 
 module.exports = router;
