@@ -8,6 +8,32 @@ const { findUser, saveUser } = require("../../db/db");
 const jwt = require('jsonwebtoken');
 const checkAuth = require("../../auth/check.Auth");
 
+/**
+ * @swagger
+ * tags:
+ *  name: User Post
+ *  description: This is for the user post
+ * /posts/post:
+ *  post:
+ *      tags: [User Post]
+ *      requestBody:
+ *          required: true,
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          title:
+ *                              type: string
+ *                              default: Why me
+ *                          post:
+ *                              type: string
+ *                              default: Because you are you
+ *      responses:
+ *         default:
+ *             description: Success
+ */
+
 router.use(express.json());
 
 router.post("/signup", (req, res, next) => {
@@ -101,7 +127,10 @@ router.post("/login", (req, res, next) => {
 });
 
 router.get("/profile", checkAuth, (req, res, next) => {
-  res.status(200).json({ message: "Welcome User", result: req.userData });
+  res.status(200).json({ 
+    message: `Welcome ${req.userData.name}`,  
+    result: req.userData, 
+  });
 });
 
 module.exports = router;

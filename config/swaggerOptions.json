@@ -1,0 +1,158 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Node JS Post API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Heather Mosley",
+      "email": "hmosley@student.fullsail.edu"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001",
+      "description": "Local Server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/signup": {
+      "post": {
+        "tags": ["Post"],
+        "summary": "User Signup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "default": "Jane"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "default": "Doe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "default": "jane@email.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "default": "jdoe12"
+                  },
+                  "address": {
+                    "type": "string",
+                    "default": "304 jane lane"
+                  },
+                  "city": {
+                    "type": "string",
+                    "default": "monroe"
+                  },
+                  "state": {
+                    "type": "string",
+                    "default": "louisiana"
+                  },
+                  "zip": {
+                    "type": "number",
+                    "default": 71209
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Unable to Post"
+          },
+          "501": {
+            "description": "Unable to Post"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Post"],
+        "summary": "Login to Profile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "default": "jane@email.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "default": "jdoe12"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Unable to Get Profile"
+          },
+          "501": {
+            "description": "Unable to Get Profile"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": ["Get"],
+        "summary": "Get Profile",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Unable to Get Profile"
+          },
+          "501": {
+            "description": "Unable to Get Profile"
+          }
+        }
+      }
+    }
+  }
+}

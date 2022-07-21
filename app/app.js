@@ -4,6 +4,8 @@ const cors = require("cors");
 const userRouter = require('../api/routes/userRouter');
 const mongoose = require('mongoose');
 const jwtRouter = require('../api/routes/jwtRouter')
+const swaggerUI = require('swagger-ui-express');
+const options = require('../config/swaggerOptions.json');
 require('dotenv').config();
 
 //middleware
@@ -27,6 +29,9 @@ app.get("/", (req, res, next) => {
 });
 
 app.use("/users", userRouter);
+
+console.log(options);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(options));
 
 //middleware for bad url and errors
 app.use((req, res, next) => {
