@@ -29,7 +29,7 @@
     }
   ],
   "paths": {
-    "/signup": {
+    "/users/signup": {
       "post": {
         "tags": ["Post"],
         "summary": "User Signup",
@@ -49,7 +49,7 @@
                   },
                   "email": {
                     "type": "string",
-                    "default": "jane@email.com"
+                    "default": "jdoe@email.com"
                   },
                   "password": {
                     "type": "string",
@@ -95,7 +95,7 @@
         }
       }
     },
-    "/login": {
+    "/users/login": {
       "post": {
         "tags": ["Post"],
         "summary": "Login to Profile",
@@ -107,7 +107,7 @@
                 "properties": {
                   "email": {
                     "type": "string",
-                    "default": "jane@email.com"
+                    "default": "jdoe@email.com"
                   },
                   "password": {
                     "type": "string",
@@ -134,7 +134,7 @@
         }
       }
     },
-    "/profile": {
+    "/users/profile": {
       "get": {
         "tags": ["Get"],
         "summary": "Get Profile",
